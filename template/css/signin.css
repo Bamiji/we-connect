@@ -1,0 +1,11 @@
+#signin-form {
+  background-color: #42c5f4;
+  max-width: 30%;
+  margin: auto;
+  padding: 15px;
+}
+
+#signin-form input{
+    display: block;
+    margin: auto;
+}
