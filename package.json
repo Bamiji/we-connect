@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "devstart": "nodemon ./bin/www",
-    "eslint": "eslint app.js & eslint routes/** & eslint test/**",
-    "test": "mocha"
+    "start": "node server/bin/www",
+    "devstart": "nodemon server/bin/www",
+    "eslint": "eslint server/app.js & eslint server/routes/** & eslint server/test/**",
+    "test": "mocha server/test"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
