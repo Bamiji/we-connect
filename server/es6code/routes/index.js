@@ -7,4 +7,4 @@ router.get('/', (req, res, /* next */) => {
   res.send('Welcome to We Connect');
 });
 
-module.exports = router;
+export default router;

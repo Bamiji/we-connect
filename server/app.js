@@ -37,5 +37,3 @@ app.use('/auth', _auth2.default);
 app.use('/businesses', _businesses2.default);
 
 app.listen(3000);
-
-module.exports = app;

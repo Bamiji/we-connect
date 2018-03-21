@@ -1,5 +1,9 @@
 'use strict';
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _express = require('express');
 
 var _express2 = _interopRequireDefault(_express);
@@ -86,4 +90,4 @@ router.get('/:businessId/reviews', function (req, res) {
   res.send('All reviews for business ' + businessName + ': ' + business.slice(1) + '.');
 });
 
-module.exports = router;
+exports.default = router;

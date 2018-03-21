@@ -91,4 +91,4 @@ router.get('/:businessId/reviews', (req, res) => {
   res.send(`All reviews for business ${businessName}: ${business.slice(1)}.`);
 });
 
-module.exports = router;
+export default router;
