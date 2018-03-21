@@ -1,94 +1,89 @@
-const express = require('express');
+'use strict';
 
-const router = express.Router();
+var _express = require('express');
 
-router.post('/', (req, res) => {
-  const { name, location, category } = req.body;
+var _express2 = _interopRequireDefault(_express);
 
-  res.send(`Business ${name} of category ${category} at ${location} created.`);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var router = _express2.default.Router();
+
+router.post('/', function (req, res) {
+  var _req$body = req.body,
+      name = _req$body.name,
+      location = _req$body.location,
+      category = _req$body.category;
+
+
+  res.send('Business ' + name + ' of category ' + category + ' at ' + location + ' created.');
 });
 
-router.put('/:businessId', (req, res) => {
-  const business = req.params.businessId === '1' ?
-    ['andela', 'lagos', 'computer science'] :
-    ['not andela', 'abuja', 'engineering'];
+router.put('/:businessId', function (req, res) {
+  var business = req.params.businessId === '1' ? ['andela', 'lagos', 'computer science'] : ['not andela', 'abuja', 'engineering'];
 
-  const name = req.body.name === undefined ? business[0] : req.body.name;
-  const location = req.body.location === undefined ? business[1] : req.body.location;
-  const category = req.body.category === undefined ? business[2] : req.body.category;
+  var name = req.body.name === undefined ? business[0] : req.body.name;
+  var location = req.body.location === undefined ? business[1] : req.body.location;
+  var category = req.body.category === undefined ? business[2] : req.body.category;
 
-  res.send(`Business ${name} of category ${category} at ${location} updated.`);
+  res.send('Business ' + name + ' of category ' + category + ' at ' + location + ' updated.');
 });
 
-router.delete('/:businessId', (req, res) => {
-  const business = req.params.businessId === '1' ?
-    ['andela', 'lagos', 'computer science'] :
-    ['not andela', 'abuja', 'engineering'];
+router.delete('/:businessId', function (req, res) {
+  var business = req.params.businessId === '1' ? ['andela', 'lagos', 'computer science'] : ['not andela', 'abuja', 'engineering'];
 
-  res.send(`Business ${business[0]} deleted`);
+  res.send('Business ' + business[0] + ' deleted');
 });
 
-router.get('/:businessId', (req, res) => {
-  const business = req.params.businessId === '1' ?
-    ['andela', 'lagos', 'computer science'] :
-    ['not andela', 'abuja', 'engineering'];
+router.get('/:businessId', function (req, res) {
+  var business = req.params.businessId === '1' ? ['andela', 'lagos', 'computer science'] : ['not andela', 'abuja', 'engineering'];
 
-  res.send(`Business ${business[0]} found`);
+  res.send('Business ' + business[0] + ' found');
 });
 
-router.get('/', (req, res) => {
-  const businesses = [['andela', 'lagos', 'tech'],
-    ['andela2', 'abuja', 'marketting'],
-    ['not andela', 'lagos', 'tech'],
-    ['not andela 2', 'abuja', 'marketting']];
+router.get('/', function (req, res) {
+  var businesses = [['andela', 'lagos', 'tech'], ['andela2', 'abuja', 'marketting'], ['not andela', 'lagos', 'tech'], ['not andela 2', 'abuja', 'marketting']];
 
   if (req.query.location !== undefined) {
-    const location = req.query.location === '1' ? 'lagos' : 'abuja';
-    const validBusinesses = [];
+    var location = req.query.location === '1' ? 'lagos' : 'abuja';
+    var validBusinesses = [];
 
-    businesses.forEach((business) => {
+    businesses.forEach(function (business) {
       if (business[1] === location) {
         validBusinesses.push(business);
       }
     });
 
-    res.send(`The following businesses are at location ${location}:
-              ${validBusinesses}.`);
+    res.send('The following businesses are at location ' + location + ':\n              ' + validBusinesses + '.');
   } else if (req.query.category !== undefined) {
-    const category = req.query.category === '1' ? 'tech' : 'marketting';
-    const validBusinesses = [];
+    var category = req.query.category === '1' ? 'tech' : 'marketting';
+    var _validBusinesses = [];
 
-    businesses.forEach((business) => {
+    businesses.forEach(function (business) {
       if (business[2] === category) {
-        validBusinesses.push(business);
+        _validBusinesses.push(business);
       }
     });
 
-    res.send(`The following businesses are in category ${category}:
-              ${validBusinesses}.`);
+    res.send('The following businesses are in category ' + category + ':\n              ' + _validBusinesses + '.');
   } else {
-    res.send(`All Businesses: ${businesses}`);
+    res.send('All Businesses: ' + businesses);
   }
 });
 
-router.post('/:businessId/reviews', (req, res) => {
-  const business = req.params.businessId === '1' ?
-    ['andela', 'lagos', 'computer science'] :
-    ['not andela', 'abuja', 'engineering'];
+router.post('/:businessId/reviews', function (req, res) {
+  var business = req.params.businessId === '1' ? ['andela', 'lagos', 'computer science'] : ['not andela', 'abuja', 'engineering'];
 
-  const businessName = business[0];
-  const reviewTitle = req.body.title;
+  var businessName = business[0];
+  var reviewTitle = req.body.title;
 
-  res.send(`Added review ${reviewTitle} to business ${businessName}.`);
+  res.send('Added review ' + reviewTitle + ' to business ' + businessName + '.');
 });
 
-router.get('/:businessId/reviews', (req, res) => {
-  const business = req.params.businessId === '1' ?
-    ['andela', 'review-a', 'review-b'] :
-    ['not andela', 'review-c', 'review-d'];
-  const businessName = business[0];
+router.get('/:businessId/reviews', function (req, res) {
+  var business = req.params.businessId === '1' ? ['andela', 'review-a', 'review-b'] : ['not andela', 'review-c', 'review-d'];
+  var businessName = business[0];
 
-  res.send(`All reviews for business ${businessName}: ${business.slice(1)}.`);
+  res.send('All reviews for business ' + businessName + ': ' + business.slice(1) + '.');
 });
 
 module.exports = router;

@@ -1,93 +1,70 @@
-const { expect } = require('chai');
-const request = require('request');
+'use strict';
 
-describe('Signup Route', () => {
-  const username = 'Tester';
+var _chai = require('chai');
 
-  it(
-    'returns status 200',
-    (done) => {
-      request.post(
-        {
-          url: 'http://localhost:3000/auth/signup',
-          form: { name: username }
-        },
-        (error, response) => {
-          expect(response.statusCode).to.equal(200);
-          done();
-        }
-      );
-    }
-  );
+var _request = require('request');
 
-  it(
-    'returns username as registered',
-    (done) => {
-      request.post(
-        {
-          url: 'http://localhost:3000/auth/signup',
-          form: { name: username }
-        },
-        (err, httpResponse, body) => {
-          expect(body).to.include(username);
-          expect(body).to.include('has been registered');
-          done();
-        }
-      );
-    }
-  );
+var _request2 = _interopRequireDefault(_request);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+describe('Signup Route', function () {
+  var username = 'Tester';
+
+  it('returns status 200', function (done) {
+    _request2.default.post({
+      url: 'http://localhost:3000/auth/signup',
+      form: { name: username }
+    }, function (error, response) {
+      (0, _chai.expect)(response.statusCode).to.equal(200);
+      done();
+    });
+  });
+
+  it('returns username as registered', function (done) {
+    _request2.default.post({
+      url: 'http://localhost:3000/auth/signup',
+      form: { name: username }
+    }, function (err, httpResponse, body) {
+      (0, _chai.expect)(body).to.include(username);
+      (0, _chai.expect)(body).to.include('has been registered');
+      done();
+    });
+  });
 });
 
-describe('Login Route', () => {
-  const username = 'banji';
-  const password = 'banji';
+describe('Login Route', function () {
+  var username = 'banji';
+  var password = 'banji';
 
-  it(
-    'returns status 200',
-    (done) => {
-      request.post(
-        {
-          url: 'http://localhost:3000/auth/login',
-          form: { name: username, password }
-        },
-        (error, response) => {
-          expect(response.statusCode).to.equal(200);
-          done();
-        }
-      );
-    }
-  );
+  it('returns status 200', function (done) {
+    _request2.default.post({
+      url: 'http://localhost:3000/auth/login',
+      form: { name: username, password: password }
+    }, function (error, response) {
+      (0, _chai.expect)(response.statusCode).to.equal(200);
+      done();
+    });
+  });
 
-  it(
-    'returns username as logged in',
-    (done) => {
-      request.post(
-        {
-          url: 'http://localhost:3000/auth/login',
-          form: { name: username, password }
-        },
-        (err, httpResponse, body) => {
-          expect(body).to.include(username);
-          expect(body).to.include('has been logged in');
-          done();
-        }
-      );
-    }
-  );
+  it('returns username as logged in', function (done) {
+    _request2.default.post({
+      url: 'http://localhost:3000/auth/login',
+      form: { name: username, password: password }
+    }, function (err, httpResponse, body) {
+      (0, _chai.expect)(body).to.include(username);
+      (0, _chai.expect)(body).to.include('has been logged in');
+      done();
+    });
+  });
 
-  it(
-    'fails to login unauthenticated',
-    (done) => {
-      request.post(
-        {
-          url: 'http://localhost:3000/auth/login',
-          form: { name: username, password: 'not password' }
-        },
-        (err, httpResponse, body) => {
-          expect(body).to.include('Login failed');
-          done();
-        }
-      );
-    }
-  );
+  it('fails to login unauthenticated', function (done) {
+    _request2.default.post({
+      url: 'http://localhost:3000/auth/login',
+      form: { name: username, password: 'not password' }
+    }, function (err, httpResponse, body) {
+      (0, _chai.expect)(body).to.include('Login failed');
+      done();
+    });
+  });
 });

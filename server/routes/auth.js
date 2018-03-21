@@ -1,19 +1,29 @@
-const express = require('express');
+'use strict';
 
-const router = express.Router();
+var _express = require('express');
 
-router.post('/signup', (req, res) => {
-  const { name } = req.body;
+var _express2 = _interopRequireDefault(_express);
 
-  res.send(`User ${name} has been registered.`);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var router = _express2.default.Router();
+
+router.post('/signup', function (req, res) {
+  var name = req.body.name;
+
+
+  res.send('User ' + name + ' has been registered.');
 });
 
-router.post('/login', (req, res) => {
-  const user = { name: 'banji', password: 'banji' };
-  const { name, password } = req.body;
+router.post('/login', function (req, res) {
+  var user = { name: 'banji', password: 'banji' };
+  var _req$body = req.body,
+      name = _req$body.name,
+      password = _req$body.password;
+
 
   if (name === user.name && password === user.password) {
-    res.send(`User ${name} has been logged in.`);
+    res.send('User ' + name + ' has been logged in.');
   } else {
     res.send('Login failed.');
   }

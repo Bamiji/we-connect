@@ -5,24 +5,27 @@
   "scripts": {
     "start": "node server/app.js",
     "devstart": "nodemon server/app.js",
-    "eslint": "eslint server/app.js & eslint server/routes/** & eslint server/test/**",
+    "eslint": "eslint server/es6code/app.js & eslint server/es6code/routes/** & eslint server/es6code/test/**",
     "test": "nyc mocha server/test",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "babel": "babel server/es6code/routes -d server/routes & babel server/es6code/test -d server/test & babel server/es6code/app.js -o server/app.js"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
+    "chai": "^4.1.2",
     "express": "~4.15.5",
-    "morgan": "~1.9.0"
+    "morgan": "~1.9.0",
+    "request": "^2.85.0"
   },
   "devDependencies": {
-    "chai": "^4.1.2",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "coveralls": "^3.0.0",
     "eslint": "^4.18.2",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.9.0",
     "mocha": "^5.0.4",
     "nodemon": "^1.17.1",
-    "nyc": "^11.6.0",
-    "request": "^2.85.0"
+    "nyc": "^11.6.0"
   }
 }
