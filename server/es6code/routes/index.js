@@ -1,10 +1,9 @@
 import express from 'express';
+import homePage from '../controllers/index';
 
 const router = express.Router();
 
 /* GET home page. */
-router.get('/', (req, res, /* next */) => {
-  res.send('Welcome to We Connect');
-});
+router.get('/', homePage);
 
 export default router;

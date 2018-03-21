@@ -5,10 +5,10 @@
   "scripts": {
     "start": "node server/app.js",
     "devstart": "nodemon server/app.js",
-    "eslint": "eslint server/es6code/app.js & eslint server/es6code/routes/** & eslint server/es6code/test/**",
+    "eslint": "eslint server/es6code/app.js & eslint server/es6code/routes/** & eslint server/es6code/test/** & eslint server/es6code/controllers/**",
     "test": "nyc mocha server/test",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "babel": "babel server/es6code/routes -d server/routes & babel server/es6code/test -d server/test & babel server/es6code/app.js -o server/app.js"
+    "babel": "babel server/es6code/routes -d server/routes & babel server/es6code/test -d server/test & babel server/es6code/app.js -o server/app.js & babel server/es6code/controllers -d server/controllers"
   },
   "dependencies": {
     "body-parser": "~1.18.2",

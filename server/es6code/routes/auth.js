@@ -1,22 +1,9 @@
 import express from 'express';
+import { signUp, logIn } from '../controllers/auth';
 
 const router = express.Router();
 
-router.post('/signup', (req, res) => {
-  const { name } = req.body;
-
-  res.send(`User ${name} has been registered.`);
-});
-
-router.post('/login', (req, res) => {
-  const user = { name: 'banji', password: 'banji' };
-  const { name, password } = req.body;
-
-  if (name === user.name && password === user.password) {
-    res.send(`User ${name} has been logged in.`);
-  } else {
-    res.send('Login failed.');
-  }
-});
+router.post('/signup', signUp);
+router.post('/login', logIn);
 
 export default router;

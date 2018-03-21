@@ -8,29 +8,13 @@ var _express = require('express');
 
 var _express2 = _interopRequireDefault(_express);
 
+var _auth = require('../controllers/auth.js');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var router = _express2.default.Router();
 
-router.post('/signup', function (req, res) {
-  var name = req.body.name;
-
-
-  res.send('User ' + name + ' has been registered.');
-});
-
-router.post('/login', function (req, res) {
-  var user = { name: 'banji', password: 'banji' };
-  var _req$body = req.body,
-      name = _req$body.name,
-      password = _req$body.password;
-
-
-  if (name === user.name && password === user.password) {
-    res.send('User ' + name + ' has been logged in.');
-  } else {
-    res.send('Login failed.');
-  }
-});
+router.post('/signup', _auth.signUp);
+router.post('/login', _auth.logIn);
 
 exports.default = router;
